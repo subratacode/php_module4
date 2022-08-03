@@ -20,7 +20,7 @@
                         <h2>Add Student</h2>
                     </div>
                     <div class="card-body">
-                        <form action="addStudentDb.php" method="post">
+                        <form action="addStudentDb.php" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control" name="name">
@@ -62,6 +62,7 @@
                             <div class="mb-3">
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" class="form-control" name="image">
+                                <span class="text-danger"><?php if (isset($_SESSION['password_error_msg'])) echo $_SESSION['password_error_msg']; unset($_SESSION['password_error_msg']); ?></span>
                             </div>
                             <input type="submit" class="btn btn-primary my-3"></button>
                         </form>
