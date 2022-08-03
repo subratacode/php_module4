@@ -1,39 +1,6 @@
-<?php
-require_once "dbConfig.php";
-if ($inputDate>$currentDate) {
-    $name_error = "Please enter a valid date";
-    $error = true;
-}
-// if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-//     $email_error = "Please Enter Valid Email ID";
-//     $error = true;
-// }
-// if (strlen($password) < 6) {
-//     $password_error = "Password must be minimum of 6 characters";
-//     $error = true;
-// }
-// if (strlen($mobile) < 10) {
-//     $mobile_error = "Mobile number must be minimum of 10 characters";
-//     $error = true;
-// }
-// if ($password != $cpassword) {
-//     $cpassword_error = "Password and Confirm Password doesn't match";
-//     $error = true;
-// }
-// if (!$error) {
-//     if (mysqli_query($conn, "INSERT INTO users(name, email, mobile, password) VALUES('" . $name . "', '" . $email . "', '" . $mobile . "', '" . md5($password) . "')")) {
-//         header("location: login.php");
-//         exit();
-//     } else {
-//         echo "Error: " . $sql . "" . mysqli_error($conn);
-//     }
-// }
-mysqli_close($conn);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>PHP Code to Retrieve Data from MySQL Database and Display in html Table</title>
@@ -65,7 +32,7 @@ mysqli_close($conn);
                             <div class="mb-3">
                                 <label for="dob" class="form-label">Date of Birth</label>
                                 <input type="date" class="form-control" name="dob">
-                                <span class="text-danger"><?php if (isset($dob_error)) echo $dob_error; ?></span>
+                                <span class="text-danger"><?php session_start(); if (isset($_SESSION['msg'])) echo $_SESSION['msg']; unset($_SESSION['msg']); ?></span>
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
