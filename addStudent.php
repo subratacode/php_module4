@@ -1,4 +1,8 @@
 
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +36,7 @@
                             <div class="mb-3">
                                 <label for="dob" class="form-label">Date of Birth</label>
                                 <input type="date" class="form-control" name="dob">
-                                <span class="text-danger"><?php session_start(); if (isset($_SESSION['msg'])) echo $_SESSION['msg']; unset($_SESSION['msg']); ?></span>
+                                <span class="text-danger"><?php if (isset($_SESSION['password_error_msg'])) echo $_SESSION['password_error_msg']; unset($_SESSION['password_error_msg']); ?></span>
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
@@ -41,6 +45,7 @@
                             <div class="mb-3">
                                 <label for="zip" class="form-label">Zip</label>
                                 <input type="text" class="form-control" name="zip">
+                                <span class="text-danger"><?php if (isset($_SESSION['zipcode_error_msg'])) echo $_SESSION['zipcode_error_msg']; unset($_SESSION['zipcode_error_msg']); ?></span>
                             </div>
                             <div class="mb-3">
                                 <label for="city" class="form-label">City</label>

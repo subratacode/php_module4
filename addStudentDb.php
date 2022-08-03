@@ -19,9 +19,21 @@ $currentDob = date('Y-m-d');
 
 // dob validaiton
 if($dob>$currentDob) {
-    $dobErrorMsg = "Please enter a valid date!";
+    $dob_error_msg = "Please enter a valid date!";
     $error = true;
 }
+
+// zipcode validaiton
+if(strlen($zip)!=6) {
+    $zipcode_error_msg = "Please enter a valid zipcode of 6 digit number!";
+    $error = true;
+}
+
+// password validation
+// if (!preg_match("/^[a-zA-Z0-9]+$/", $password)) {
+//     $password_error_msg = "Password must contain only alphanumeric and space";
+//     $error = true;
+// }
 
 if(!$error) {
     $sql = "INSERT INTO student_details(name,phone,email,dob,address,zip,city,state,country,image) VALUES ('$name','$phone','$email','$dob','$address','$zip','$city','$state','$country','$image')";
@@ -37,7 +49,16 @@ if(!$error) {
     }
 }
 else {
-    $_SESSION['msg'] = $dobErrorMsg;
+    if(isset($dob_error_msg)) {
+        $_SESSION['dob_error_msg'] = $dob_error_msg;
+    }
+
+    if(isset($zipcode_error_msg)) {
+        $_SESSION['zipcode_error_msg'] = $zipcode_error_msg;
+    }
+    // if(isset($password_error_msg)) {
+    //     $_SESSION['password_error_msg'] = $password_error_msg;
+    // }
     header('location:addStudent.php');
 }
 
